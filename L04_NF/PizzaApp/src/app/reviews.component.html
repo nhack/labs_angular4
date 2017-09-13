@@ -9,9 +9,9 @@
     <cite>by: {{newReview?.author}}</cite>
   </blockquote>
   <h4>Submit a review</h4>
-  <form class="new" (ngSubmit)="onSubmit()">
-    <select class="form-control" [(ngModel)]="newReview.stars" name="stars">
-      <option value="undefined" disabled>Rate the Product</option>
+  <form class="new" (ngSubmit)="onSubmit()" #newForm="ngForm">
+    <select class="form-control" [(ngModel)]="newReview.stars" required name="stars">
+      <option disabled>Rate the Product</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -19,9 +19,12 @@
       <option value="5">5</option>
     </select>
     <textarea placeholder="Write a short review for the pizza..." class="form-control" [(ngModel)]="newReview.body"
-              name="body"></textarea>
-    <input type="email" placeholder="jimmyDean@example.org" class="form-control" [(ngModel)]="newReview.author"
-           name="email">
-    <button type="submit" class="flat right submit">Submit Review</button>
+              name="body" #body="ngModel"></textarea>
+    <input type="email" placeholder="jimmyDean@example.org" class="form-control" [(ngModel)]="newReview.author" required
+           name="email" #author="ngModel">
+    <div class="alert error" [class.hide]="author.valid || author.pristine">
+      Author is requried!
+    </div>
+    <button type="submit" class="flat right submit" [disabled]="!newForm.form.valid">Submit Review</button>
   </form>
 </div>
