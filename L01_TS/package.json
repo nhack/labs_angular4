@@ -1,16 +1,17 @@
 {
   "name": "irian_ts",
   "version": "1.0.0",
-  "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
-  },
   "license": "ISC",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --config webpack.config.js --port 8000"
+  },
   "devDependencies": {
-    "concurrently": "3.4.0",
-    "lite-server": "2.3.0",
-    "typescript": "2.4.1"
+    "awesome-typescript-loader": "^3.1.2",
+    "inline-source-map": "^0.6.2",
+    "source-map-loader": "^0.2.0",
+    "typescript": "^2.4.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }
