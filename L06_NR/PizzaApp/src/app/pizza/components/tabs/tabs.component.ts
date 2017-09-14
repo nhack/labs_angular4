@@ -1,6 +1,7 @@
 import {Pizza} from "../../domain/pizza";
-import {Component, Input} from "@angular/core";
+import {Component, Inject, Input} from "@angular/core";
 import {Review} from "../../domain/review";
+import {IPizzaService, PIZZA_SERVICE} from "../../service/pizza.service";
 
 @Component({
   selector: 'tabs',
@@ -13,11 +14,9 @@ export class TabsComponent {
   private pizza: Pizza;
 
   private tab: number;
-  private newReview: Review;
 
-  constructor() {
+  constructor(@Inject(PIZZA_SERVICE) private pizzaService: IPizzaService) {
     this.tab = 1;
-    this.newReview = <Review>{};
   }
 
   public selectTab(tid: number) {
@@ -28,9 +27,8 @@ export class TabsComponent {
     return this.tab === tid;
   }
 
-  public onSubmit(){
-    this.newReview.createdOn = new Date().getMilliseconds();
-    this.pizza.reviews.push(this.newReview);
-    this.newReview = <Review>{};
+  public addReview(review: Review) {
+    this.pizzaService.addReview(this.pizza, review)
+      .then(() => this.pizza.reviews.push(review));
   }
 }
