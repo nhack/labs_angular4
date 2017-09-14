@@ -91,3 +91,7 @@ button.submit:hover {
 .error{
   color: #a94442;
 }
+
+.list {
+  cursor: pointer;
+}
