@@ -1,22 +1,21 @@
-import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import "rxjs/Rx";
 
-import {Pizza} from "./pizza";
+export abstract class RestService {
 
-@Injectable()
-export class PizzaRestService {
+  constructor() {
+  }
 
-  private url: string = "http://pizza-store.herokuapp.com/api/pizzas";
-
-  constructor(private http: Http) { }
-
-  getPizzas(): Promise<Array<Pizza>> {
+  getData<T>(): Promise<Array<T>> {
     return this.http.get(this.url)
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
+
+  protected abstract get http(): Http;
+
+  protected abstract get url(): string;
 
   private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
