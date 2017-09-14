@@ -6,7 +6,7 @@ import {CustomerComponent} from "./components/customer/customer.component";
 import {CustomerListComponent} from "./components/customerList/customerList.component";
 
 export const CUSTOMER_ROUTES: Routes = [{
-  path: 'customers', children: [
+  path: '', children: [
     {path: '', component: CustomerListComponent},
     {path: ':id', component: CustomerComponent}
   ]

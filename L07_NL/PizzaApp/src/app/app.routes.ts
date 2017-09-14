@@ -4,5 +4,6 @@
 import {Routes} from "@angular/router";
 
 export const ROUTES: Routes = [
-  {path: '', redirectTo: '/pizzas', pathMatch: 'full'}
+  {path: '', redirectTo: '/pizzas', pathMatch: 'full'},
+  {path: 'customers', loadChildren: './customers/customer.module#CustomerModule'}
 ];

@@ -5,7 +5,6 @@ import {AppComponent} from "./app.component";
 import {NavigationService} from "./common/navigation.service";
 import {PizzaModule} from "./pizza/pizza.module";
 import {ROUTES} from "./app.routes";
-import {CustomerModule} from "./customers/customer.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import {CustomerModule} from "./customers/customer.module";
   imports: [
     BrowserModule,
     PizzaModule,
-    CustomerModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [NavigationService],
