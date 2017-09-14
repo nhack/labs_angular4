@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Pizza} from "./pizza";
-import {PizzaFileService} from "./pizzaFile.service";
+import {PizzaRestService} from "./pizzaRest.service";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,13 @@ import {PizzaFileService} from "./pizzaFile.service";
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private pizzas: Array<Pizza>;
 
-  constructor(private pizzaService: PizzaFileService) {
-    this.pizzas = this.pizzaService.getPizzas();
+  constructor(private pizzaService: PizzaRestService) {
+  }
+
+  ngOnInit(): void {
+    this.pizzaService.getPizzas().then(pizzas => this.pizzas = pizzas);
   }
 }
