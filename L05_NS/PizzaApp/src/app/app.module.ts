@@ -5,7 +5,7 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {TabsComponent} from "./tabs.component";
 import {ReviewsComponent} from "./reviews.component";
-import {PizzaService} from "./pizza.service";
+import {PizzaFileService} from "./pizzaFile.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {PizzaService} from "./pizza.service";
     FormsModule,
     HttpModule
   ],
-  providers: [PizzaService],
+  providers: [PizzaFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
