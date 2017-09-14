@@ -9,9 +9,11 @@ import {PizzaRestService} from "./pizza/service/pizzaRest.service";
 import {PIZZA_SERVICE} from "./pizza/service/pizza.service";
 import {ExtrasComponent} from "./pizza/components/extras/extras.component";
 import {IngredientsComponent} from "./pizza/components/ingredients/ingredients.component";
+import {AppComponent} from "./app.component";
 
 @NgModule({
   declarations: [
+    AppComponent,
     PizzaComponent,
     TabsComponent,
     ReviewsComponent,
@@ -24,7 +26,7 @@ import {IngredientsComponent} from "./pizza/components/ingredients/ingredients.c
     HttpModule
   ],
   providers: [{provide: PIZZA_SERVICE, useClass: PizzaRestService}],
-  bootstrap: [PizzaComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

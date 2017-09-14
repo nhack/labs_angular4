@@ -6,7 +6,7 @@ export abstract class RestService {
   constructor() {
   }
 
-  getData<T>(): Promise<Array<T>> {
+  getData<T>(): Promise<T> {
     return this.http.get(this.url)
       .toPromise()
       .then(this.extractData)

@@ -11,6 +11,10 @@ export class PizzaFileService implements IPizzaService {
     return Promise.resolve(PIZZAS);
   }
 
+  getPizza(id: string): Promise<Pizza> {
+    return Promise.resolve(PIZZAS.find(pizza => pizza._id === id));
+  }
+
   addReview(pizza: Pizza, review: Review): Promise<Pizza> {
     throw new Error('addReview not supported for PizzaFileService');
   }
